@@ -93,3 +93,19 @@ body {
   color: var(--color-text-muted);
   font-size: 1.1rem;
 }
+
+/* About */
+
+.about {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.about h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.about p {
+  color: var(--color-text-muted);
+}
