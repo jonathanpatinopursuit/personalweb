@@ -24,6 +24,22 @@
   }
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-surface: #1c1c1e;
+  --color-text: #f2f2f2;
+  --color-text-muted: #a3a3a3;
+  --color-border: #2e2e30;
+}
+
+:root[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5a5a5a;
+  --color-border: #e4e4e7;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -73,6 +89,16 @@ body {
 
 .nav a:hover {
   color: var(--color-accent);
+}
+
+.theme-toggle {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 /* Hero */
