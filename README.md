@@ -1,5 +1,7 @@
 # personalweb
 
+🔗 **[View the live site](https://jonathanpatinopursuit.github.io/personalweb/)**
+
 Hi, I'm **Jonathan Patino** — a dad from Pereira, Colombia, currently learning how to use AI.
 
 This is my personal website, built with plain HTML, CSS, and JavaScript. It's both:
