@@ -1,47 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jonathan Patino</title>
-  <link rel="stylesheet" href="styles/main.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Patino</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: #111; max-width: 680px; margin: 0 auto; padding: 60px 24px; }
+
+  #about, #path, #exp, #contact { scroll-margin-top: 76px; }
+
+  nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee; padding: 14px 0; margin-bottom: 40px; z-index: 100; }
+  nav ul { list-style: none; display: flex; gap: 24px; }
+  nav a { text-decoration: none; color: #555; font-size: 0.85rem; font-weight: 600; }
+  nav a:hover { color: #2563EB; }
+
+  .hero { margin-bottom: 40px; }
+  h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+  .tagline { font-size: 1.1rem; font-weight: 600; color: #2563EB; margin-bottom: 12px; }
+  .bio { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+  .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #888; font-weight: 700; margin-bottom: 14px; }
+
+  .about { margin-bottom: 44px; }
+  .about-content { display: flex; gap: 20px; align-items: flex-start; }
+  .about p { font-size: 0.95rem; color: #333; line-height: 1.7; }
+  .about-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid #2563EB; flex-shrink: 0; }
+  .about-photo-placeholder { width: 96px; height: 96px; border-radius: 50%; background: #2563EB; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.4rem; flex-shrink: 0; }
+  @media (max-width: 480px) {
+    .about-content { flex-direction: column; align-items: center; text-align: center; }
+  }
+
+  .path { margin-bottom: 44px; }
+  .path-track { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .pill { display: flex; align-items: center; gap: 6px; border: 1.5px solid #d8d8d8; border-radius: 999px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: #222; }
+  .pill span.dates { font-weight: 400; color: #999; font-size: 0.78rem; }
+  .pill svg { width: 14px; height: 14px; flex-shrink: 0; stroke: #2563EB; }
+  .path-arrow { color: #bbb; font-size: 1rem; }
+
+  .exp { margin-bottom: 44px; }
+  .exp-item { padding: 16px 0; border-bottom: 1px solid #eee; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; }
+  .exp-role { font-size: 0.95rem; font-weight: 700; color: #111; }
+  .exp-dates { font-size: 0.8rem; color: #999; white-space: nowrap; }
+  .exp-org { font-size: 0.85rem; color: #2563EB; font-weight: 600; margin-top: 2px; }
+  .exp-desc { font-size: 0.85rem; color: #555; line-height: 1.6; margin-top: 6px; }
+
+  .contact { border-top: 1px solid #e5e5e5; padding-top: 32px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn-primary { background: #2563EB; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; }
+  .btn-outline { background: transparent; color: #2563EB; border: 2px solid #2563EB; padding: 10px 24px; border-radius: 6px; font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .btn-outline svg { width: 14px; height: 14px; stroke: #2563EB; }
+  .copy-note { font-size: 0.8rem; color: #2563EB; margin-top: 8px; width: 100%; display: none; }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="logo" href="index.html">Jonathan Patino</a>
-      <nav class="nav">
-        <a href="index.html">About</a>
-        <a href="learning-log.html">Learning Log</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#path">Path</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>Jonathan Patino</h1>
+</div>
+
+<div class="about" id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-content">
+    <img src="picture.jpeg" alt="Jonathan Patino" class="about-photo" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'about-photo-placeholder',textContent:'JP'}))">
+    <p>I'm a New Yorker transitioning into AI development after a career built in construction and hospitality. I spent years working structural steel as a union ironworker, and before that, kept the floor running at Cipriani Soho — work that only comes together when people from completely different backgrounds and trades pull in the same direction. Communicating across English and Spanish on job sites and in dining rooms taught me how to collaborate with almost anyone, a skill that translates directly to cross-functional teams in tech. When I'm not building, I'm usually out on my single-speed somewhere around the city.</p>
+  </div>
+</div>
+
+<div class="path" id="path">
+  <div class="section-label">My Path</div>
+  <div class="path-track">
+    <div class="pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+      Hospitality <span class="dates">'10–'13</span>
     </div>
-  </header>
+    <span class="path-arrow">&#8594;</span>
+    <div class="pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 12.5-8 8a2.1 2.1 0 1 1-3-3l8-8"/><path d="m16 16 6-6"/><path d="m8 8 6-6a2 2 0 1 1 3 3l-1.5 1.5"/><path d="M17 5 19 7"/></svg>
+      Ironworker <span class="dates">'13–'18</span>
+    </div>
+    <span class="path-arrow">&#8594;</span>
+    <div class="pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      AI Development <span class="dates">now</span>
+    </div>
+  </div>
+</div>
 
-  <main>
-    <section class="hero">
-      <h1>Hi, I'm Jonathan 👋</h1>
-      <p>
-        I'm a dad from Pereira, Colombia, learning how to use AI —
-        one class, one project, one commit at a time.
-      </p>
-    </section>
+<div class="exp" id="exp">
+  <div class="section-label">Experience</div>
 
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        I'm based in Pereira, Colombia. Outside of learning AI, I spend my
-        time being a dad. I started this site to have a place of my own on
-        the internet, and to track my progress as I learn to build things
-        with code.
-      </p>
-    </section>
-  </main>
+  <div class="exp-item">
+    <div class="exp-top">
+      <span class="exp-role">Ironworker</span>
+      <span class="exp-dates">2013 – 2018</span>
+    </div>
+    <div class="exp-org">E.E. Cruz & Company · Kiska Construction · Guytec Steel</div>
+    <p class="exp-desc">Structural steel erection, welding, and fabrication to spec. Collaborated with crews, contractors, and project managers to hit deadlines on active job sites.</p>
+  </div>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Jonathan Patino · Pereira, Colombia</p>
-  </footer>
+  <div class="exp-item">
+    <div class="exp-top">
+      <span class="exp-role">Busser</span>
+      <span class="exp-dates">2010 – 2013</span>
+    </div>
+    <div class="exp-org">Cipriani Soho</div>
+    <p class="exp-desc">Kept a fast-paced dining room running to health and safety standards, coordinating closely with kitchen and service staff to deliver a smooth guest experience.</p>
+  </div>
 
-  <script src="scripts/main.js" defer></script>
+  <div class="exp-item">
+    <div class="exp-top">
+      <span class="exp-role">B.A. Chemistry</span>
+      <span class="exp-dates">2009</span>
+    </div>
+    <div class="exp-org">York College, CUNY</div>
+  </div>
+</div>
+
+<div class="contact" id="contact">
+  <a class="btn-primary" href="mailto:Jonathan8773@gmail.com?subject=Let's%20connect">Email Me</a>
+  <a class="btn-outline" href="resume.pdf" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
+    View Resume
+  </a>
+  <button class="btn-outline" onclick="copyEmail()">Copy Email</button>
+  <div class="copy-note" id="copyNote">✓ Email copied to clipboard</div>
+</div>
+
+<script>
+function copyEmail() {
+  navigator.clipboard.writeText('Jonathan8773@gmail.com').then(() => {
+    const note = document.getElementById('copyNote');
+    note.style.display = 'block';
+    setTimeout(() => note.style.display = 'none', 3000);
+  });
+}
+</script>
 </body>
 </html>
