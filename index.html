@@ -55,17 +55,14 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   .about { margin-bottom: 44px; }
-  .about-content { display: flex; gap: 24px; align-items: flex-start; }
-  .about-photo-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 180px; }
+  .about-content { display: block; }
   .about p { font-size: 0.95rem; color: var(--text); line-height: 1.6; text-align: left; margin-bottom: 12px; }
   .about p:last-child { margin-bottom: 0; }
-  .about-intro { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; text-align: center; margin-top: 12px; }
-  .about-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); flex-shrink: 0; }
-  .about-photo-placeholder { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.4rem; flex-shrink: 0; }
+  .about-continue { clear: both; }
+  .about-photo { float: left; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin: 0 20px 8px 0; }
+  .about-photo-placeholder { float: left; width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.4rem; margin: 0 20px 8px 0; }
   @media (max-width: 480px) {
-    .about-content { flex-direction: column; align-items: center; }
-    .about-photo-col { width: 100%; }
-    .about p { text-align: left; }
+    .about-photo, .about-photo-placeholder { float: none; margin: 0 auto 16px; }
   }
 
   .cards { display: flex; flex-direction: column; gap: 20px; margin-bottom: 44px; }
@@ -120,15 +117,11 @@
 <div class="about reveal" id="about">
   <div class="section-label">About Me</div>
   <div class="about-content">
-    <div class="about-photo-col">
-      <img src="picture.jpeg" alt="Jonathan Patino" class="about-photo" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'about-photo-placeholder',textContent:'JP'}))">
-      <p class="about-intro">New Yorker. Ironworker and hospitality pro, now building a career in AI. Outside of work, you'll usually find me riding my single-speed somewhere around the city.</p>
-    </div>
-    <div>
-      <p>Years erecting structural steel as a union ironworker taught me to work with zero margin for error. Precision isn't optional when the job carries real risk.</p>
-      <p>Before that, I ran the floor at Cipriani Soho. That meant thinking fast under pressure while keeping a whole team in sync.</p>
-      <p>Both jobs put me shoulder-to-shoulder with people who didn't share my background, language, or trade. Communicating in English and Spanish across job sites and dining rooms taught me to collaborate with almost anyone and still deliver results. That's the kind of cross-functional teamwork tech companies look for.</p>
-    </div>
+    <img src="picture.jpeg" alt="Jonathan Patino" class="about-photo" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'about-photo-placeholder',textContent:'JP'}))">
+    <p>I'm a New Yorker who built a career in construction and hospitality, and I'm now bringing that same drive into AI development. Years erecting structural steel as a union ironworker taught me to work with zero margin for error.</p>
+    <p class="about-continue">Precision isn't optional when the job carries real risk. Before that, running the floor at Cipriani Soho meant thinking fast under pressure while keeping an entire team in sync.</p>
+    <p>Both jobs put me shoulder-to-shoulder with people who didn't share my background, language, or trade — communicating in English and Spanish across job sites and dining rooms taught me to collaborate with almost anyone and still deliver results. That's exactly the kind of cross-functional teamwork tech companies are looking for.</p>
+    <p>Outside of work, you'll usually find me riding my single-speed somewhere around the city.</p>
   </div>
 </div>
 
