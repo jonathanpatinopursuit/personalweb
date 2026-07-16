@@ -24,6 +24,9 @@
 
   .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #888; font-weight: 700; margin-bottom: 14px; }
 
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
   .about { margin-bottom: 44px; }
   .about-content { display: flex; gap: 20px; align-items: flex-start; }
   .about p { font-size: 0.95rem; color: #333; line-height: 1.7; }
@@ -71,7 +74,7 @@
   <h1>Jonathan Patino</h1>
 </div>
 
-<div class="about" id="about">
+<div class="about reveal" id="about">
   <div class="section-label">About Me</div>
   <div class="about-content">
     <img src="picture.jpeg" alt="Jonathan Patino" class="about-photo" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'about-photo-placeholder',textContent:'JP'}))">
@@ -79,7 +82,7 @@
   </div>
 </div>
 
-<div class="path" id="path">
+<div class="path reveal" id="path">
   <div class="section-label">My Path</div>
   <div class="path-track">
     <div class="pill">
@@ -99,7 +102,7 @@
   </div>
 </div>
 
-<div class="exp" id="exp">
+<div class="exp reveal" id="exp">
   <div class="section-label">Experience</div>
 
   <div class="exp-item">
@@ -129,7 +132,7 @@
   </div>
 </div>
 
-<div class="contact" id="contact">
+<div class="contact reveal" id="contact">
   <a class="btn-primary" href="mailto:Jonathan8773@gmail.com?subject=Let's%20connect">Email Me</a>
   <a class="btn-outline" href="resume.pdf" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -153,6 +156,16 @@ const spyObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-40% 0px -55% 0px' });
 
 sections.forEach((section) => spyObserver.observe(section));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    revealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 function copyEmail() {
   navigator.clipboard.writeText('Jonathan8773@gmail.com').then(() => {
