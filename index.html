@@ -15,7 +15,7 @@
   nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #eee; padding: 14px 0; margin-bottom: 40px; z-index: 100; }
   nav ul { list-style: none; display: flex; gap: 24px; }
   nav a { text-decoration: none; color: #555; font-size: 0.85rem; font-weight: 600; }
-  nav a:hover { color: #2563EB; }
+  nav a:hover, nav a.active { color: #2563EB; }
 
   .hero { margin-bottom: 40px; }
   h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
@@ -140,6 +140,20 @@
 </div>
 
 <script>
+const navLinks = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('#about, #path, #exp, #contact');
+
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+    });
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach((section) => spyObserver.observe(section));
+
 function copyEmail() {
   navigator.clipboard.writeText('Jonathan8773@gmail.com').then(() => {
     const note = document.getElementById('copyNote');
